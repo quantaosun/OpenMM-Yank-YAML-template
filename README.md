@@ -14,10 +14,11 @@
 options:
   minimize: yes
   verbose: yes
-  default_number_of_iterations: .inf
+  default_number_of_iterations: 20000 # don't use .inf if sampler error requirement < 1 was set, otherwise an "overflow" error will encountered. 
+  default_nsteps_per_iteration: 500 # Increase this if report indicating decorrelation is bad.
   checkpoint_interval: 50
   temperature: 300*kelvin
-  pressure: 1*atmosphere 
+  pressure: 1*atmosphere # To run with NVT ensemble, set this option to "null". Defaults to 1 atm if excluded
   platform: OpenCL
   output_dir: p-xylene-explicit-output
   #switch_phase_interval: 100
@@ -32,9 +33,10 @@ options:
 ```
 samplers:
      stop_after_reaching_1:
-         type: MultiStateSampler
-         online_analysis_interval: 100
-         online_analysis_target_error: 1.0
+         type: ReplicaExchangeSampler   # don't need "mcmc-move" since by default it already there.
+         replica_mixing_scheme: swap-all  # or "swap-neighbour", since we chose "type" as "ReplicaExchangeSampler" we have to include this.
+         online_analysis_interval: 100.   # Increase this if simulation is slow.
+         online_analysis_target_error: 1.0 
 ```
 ## Modification 3, 
 ### add ```sampler``` to experiment, after ```protocal``` but before ```restraint```
