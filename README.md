@@ -26,7 +26,7 @@ options:
 
 
 ## Modification 2, 
-### insert a ```sampler``` block, after ```protocal``` but before ```experiment```
+### insert a ```sampler``` block, after ```system``` but before ```protocal```
 
 
 ```
@@ -37,7 +37,7 @@ samplers:
          online_analysis_target_error: 1.0
 ```
 ## Modification 3, 
-### add ```sampler``` to experiment, after ```protocal``` but before ```experiment```
+### add ```sampler``` to experiment, after ```protocal``` but before ```restraint```
 ```
 experiments:
   system: t4-xylene
