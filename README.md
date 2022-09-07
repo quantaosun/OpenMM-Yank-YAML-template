@@ -1,11 +1,14 @@
 # YAML_example
 
+# A script specially designed for YANK simulation on goolge colab.
+
 # On the basis of https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml, here is the modified YAML
-to be used on Google Colab, for a binding free energy simulation.
+# to be used on Google Colab, for a binding free energy simulation of a protein and a bound ligand.
 
 ## The simulation is designed to run until the returned dG errror reaches the defined value ``` 1 kT ```
 
-## Modification 1, define infinite steps ```.inf```, define checkpoint frequence ``` 50 ```,  and swap simulation between legs ``` 100```
+## Modification 1, 
+### define infinite steps ```.inf```, define checkpoint frequence ``` 50 ```,  and swap simulation between legs ``` 100```
 
 ```
 options:
@@ -22,7 +25,8 @@ options:
 ```
 
 
-## Modification 2, insert a ```sampler``` block
+## Modification 2, 
+### insert a ```sampler``` block, after ```protocal``` but before ```experiment```
 
 
 ```
@@ -32,7 +36,8 @@ samplers:
          online_analysis_interval: 100
          online_analysis_target_error: 1.0
 ```
-## Modification 3, add ```sampler``` to experiment
+## Modification 3, 
+### add ```sampler``` to experiment, after ```protocal``` but before ```experiment```
 ```
 experiments:
   system: t4-xylene
@@ -42,7 +47,7 @@ experiments:
     type: Harmonic
 ```
 
-## Combine everything together
+# Combine everything together, below is the full script for the simulation.
 
 ```
 # Set the general options of our simulation
