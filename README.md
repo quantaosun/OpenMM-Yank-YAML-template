@@ -2,7 +2,7 @@
 
 # A script template to be used on goolge colab for the ```Yank``` package [1].
 
-## It is designed to run the simulation until the returned dG error is smaller than ``` 1 kT ```, it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
+## It is designed to run the simulation until the returned dG error is smaller than ``` 1 kT ```, it swaps simulation for ```complex``` and ```solvent``` every ```100``` steps. 
 
 # To achieve that goal, 3 modifications were appliced to this example [2].
 
