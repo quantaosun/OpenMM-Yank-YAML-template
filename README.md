@@ -1,5 +1,49 @@
 # YAML_example
 
+# On the basis of https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml, here is the modified YAML
+to be used on Google Colab, for a binding free energy simulation.
+
+## The simulation is designed to run until the returned dG errror reaches the defined value ``` 1 kT ```
+
+## Modification 1, define infinite steps ```.inf```, define checkpoint frequence ``` 50 ```,  and swap simulation between legs ``` 100```
+
+```
+options:
+  minimize: yes
+  verbose: yes
+  default_number_of_iterations: .inf
+  checkpoint_interval: 50
+  temperature: 300*kelvin
+  pressure: 1*atmosphere 
+  platform: OpenCL
+  output_dir: p-xylene-explicit-output
+  #switch_phase_interval: 100
+
+```
+
+
+## Modification 2, insert a ```sampler``` block
+
+
+```
+samplers:
+     stop_after_reaching_1:
+         type: MultiStateSampler
+         online_analysis_interval: 100
+         online_analysis_target_error: 1.0
+```
+## Modification 3, add ```sampler``` to experiment
+```
+experiments:
+  system: t4-xylene
+  protocol: absolute-binding
+  sampler: stop_after_reaching_1
+  restraint:
+    type: Harmonic
+```
+
+## Combine everything together
+
 ```
 # Set the general options of our simulation
 options:
