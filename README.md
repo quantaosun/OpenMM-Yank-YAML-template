@@ -1,10 +1,10 @@
 # YAML_example
 
-# A script specially designed for YANK simulation on goolge colab.
+# A script template designed for YANK simulation on goolge colab with the ```Yank``` package [1].
 
 ## The simulation is designed to run until the returned dG error reaches the defined value ``` 1 kT ```, it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
 
-# To achieve that goal, 3 modifications were appliced to this example [1].
+# To achieve that goal, 3 modifications were appliced to this example [2].
 
 ## Modification 1, 
 ### define infinite steps ```.inf```, define checkpoint frequency ``` 50 ```,  and swap simulation between legs ``` 100```
@@ -133,5 +133,6 @@ experiments:
   restraint:
     type: Harmonic # Keep the ligand near the protein
 ```
-## Reference 1
-### [1] https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml
+## References
+### [1] https://github.com/choderalab/yank
+### [2] https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml
