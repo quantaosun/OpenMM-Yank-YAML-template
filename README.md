@@ -49,6 +49,14 @@ systems:
     solvent: pme
     leap:
       parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew]
+      
+ # Define the Sampler, set error requirement before stop the phase simulaiton
+ 
+samplers:
+     stop_after_reaching_1:
+         type: MultiStateSampler
+         online_analysis_interval: 100
+         online_analysis_target_error: 1.0
 
 # The protocols define the alchemical path each phase will take, we use the same lambda values, though they could be different
 protocols:
@@ -69,5 +77,6 @@ protocols:
 experiments:
   system: t4-xylene
   protocol: absolute-binding
+  sampler: stop_after_reaching_1
   restraint:
     type: Harmonic # Keep the ligand near the protein
