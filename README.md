@@ -2,10 +2,12 @@
 
 # A script specially designed for YANK simulation on goolge colab.
 
-# On the basis of https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml, here is the modified YAML
-# to be used on Google Colab, for a binding free energy simulation of a protein and a bound ligand.
+### On the basis of https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml, here is the modified YAML
+### to be used on Google Colab, for a binding free energy simulation of a protein and a bound ligand.
 
-## The simulation is designed to run until the returned dG errror reaches the defined value ``` 1 kT ```
+## The simulation is designed to run until the returned dG errror reaches the defined value ``` 1 kT ```, in a way it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
+
+# To achieve that goal, there modifications were appliced on top of example above.
 
 ## Modification 1, 
 ### define infinite steps ```.inf```, define checkpoint frequence ``` 50 ```,  and swap simulation between legs ``` 100```
@@ -21,7 +23,7 @@ options:
   pressure: 1*atmosphere # To run with NVT ensemble, set this option to "null". Defaults to 1 atm if excluded
   platform: OpenCL
   output_dir: p-xylene-explicit-output
-  #switch_phase_interval: 100
+  switch_phase_interval: 100
 
 ```
 
@@ -56,13 +58,14 @@ experiments:
 options:
   minimize: yes
   verbose: yes
-  default_number_of_iterations: .inf
+  default_number_of_iterations: 20000
+  default_nsteps_per_iteration: 500
   checkpoint_interval: 50
   temperature: 300*kelvin
-  pressure: 1*atmosphere # To run with NVT ensemble, set this option to "null". Defaults to 1 atm if excluded
+  pressure: 1*atmosphere 
   platform: OpenCL
   output_dir: p-xylene-explicit-output
-  #switch_phase_interval: 100
+  switch_phase_interval: 100
 
 # Configure the specific molecules we will use for our systems
 # Note: We do not specify what the "receptor" and what the "ligand" is yet
@@ -105,7 +108,8 @@ systems:
  
 samplers:
      stop_after_reaching_1:
-         type: MultiStateSampler
+         type: ReplicaExchangeSampler
+         replica_mixing_scheme: swap-all
          online_analysis_interval: 100
          online_analysis_target_error: 1.0
 
