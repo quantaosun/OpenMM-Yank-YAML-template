@@ -1,13 +1,13 @@
 # YAML_example
 
-# A script template designed for YANK simulation on goolge colab with the ```Yank``` package [1].
+# A script template to be used on goolge colab for the ```Yank``` package [1].
 
-## The simulation is designed to run until the returned dG error reaches the defined value ``` 1 kT ```, it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
+## It is designed to run the simulation until the returned dG error is smaller than ``` 1 kT ```, it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
 
 # To achieve that goal, 3 modifications were appliced to this example [2].
 
 ## Modification 1, 
-### define infinite steps ```.inf```, define checkpoint frequency ``` 50 ```,  and swap simulation between legs ``` 100```
+### define a large number of steps ```20000```, define checkpoint frequency ``` 50 ```,  and swap frequency between legs ``` 100```
 
 ```
 options:
@@ -24,9 +24,8 @@ options:
 
 ```
 
-
 ## Modification 2, 
-### insert a ```sampler``` block, after ```system``` but before ```protocal```
+### Insert a ```sampler``` block, after ```system```, before ```protocal```
 
 
 ```
@@ -38,7 +37,7 @@ samplers:
          online_analysis_target_error: 1.0 
 ```
 ## Modification 3, 
-### add ```sampler``` to experiment, after ```protocol``` but before ```restraint```
+### Include ```sampler``` to experiment, after ```protocol```, before ```restraint```
 ```
 experiments:
   system: t4-xylene
