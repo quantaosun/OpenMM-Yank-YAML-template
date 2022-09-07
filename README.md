@@ -2,12 +2,12 @@
 
 # A script specially designed for YANK simulation on goolge colab.
 
-## The simulation is designed to run until the returned dG errror reaches the defined value ``` 1 kT ```, in a way it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
+## The simulation is designed to run until the returned dG error reaches the defined value ``` 1 kT ```, it swaps simulation for ```complex``` ### and ```solvent``` every ```100``` steps. 
 
-# To achieve that goal, there modifications were appliced on top of this example [1].
+# To achieve that goal, 3 modifications were appliced to this example [1].
 
 ## Modification 1, 
-### define infinite steps ```.inf```, define checkpoint frequence ``` 50 ```,  and swap simulation between legs ``` 100```
+### define infinite steps ```.inf```, define checkpoint frequency ``` 50 ```,  and swap simulation between legs ``` 100```
 
 ```
 options:
@@ -32,13 +32,13 @@ options:
 ```
 samplers:
      stop_after_reaching_1:
-         type: ReplicaExchangeSampler   # don't need "mcmc-move" since by default it already there.
+         type: ReplicaExchangeSampler   # doesn't need "mcmc-move", by default, it already there.
          replica_mixing_scheme: swap-all  # or "swap-neighbour", since we chose "type" as "ReplicaExchangeSampler" we have to include this.
-         online_analysis_interval: 100.   # Increase this if simulation is slow.
+         online_analysis_interval: 100.   # Increase this if the simulation is slow.
          online_analysis_target_error: 1.0 
 ```
 ## Modification 3, 
-### add ```sampler``` to experiment, after ```protocal``` but before ```restraint```
+### add ```sampler``` to experiment, after ```protocol``` but before ```restraint```
 ```
 experiments:
   system: t4-xylene
@@ -48,7 +48,7 @@ experiments:
     type: Harmonic
 ```
 
-# Combine everything together, below is the full script for the simulation.
+# Combine everything. Below is the full script.
 
 ```
 # Set the general options of our simulation
