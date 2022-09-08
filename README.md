@@ -48,11 +48,12 @@ experiments:
 ```
 ## Other Modifications
 
-The lambda window density were increased for ```complex```, especially for L-J function.
+The lambda window density was increased for ```complex```, especially for L-J function.
 
-Highlighted red are increased for electrostatic interactions, green are increased for L-J interactions, as you can tell, I insert more states for LJ since this is more likely to have the so called hard core problem, compared to electrostatics.
+Highlighted red is increased for electrostatic interactions, and green is increased for L-J interactions. As you can tell, I insert more states for LJ since this is more likely to have the so-called hardcore problem (A classic problem in molecular dynamics) compared to electrostatics.
 
-<img width="920" alt="image" src="https://user-images.githubusercontent.com/75652473/189065665-916a92e9-6652-42c1-8af9-1d77193a3879.png">
+<img width="920" alt="image" src="https://user-images.githubusercontent.com/75652473/189066625-a66bc2e3-b59c-4cd4-9e90-937f8f9e1651.png">
+
 
 
 the ```default_nsteps_per_iteration``` was incresed from ```500``` to ```1000```
