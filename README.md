@@ -61,7 +61,6 @@ the ```default_nsteps_per_iteration``` was incresed from ```500``` to ```1000```
 ### Two versions, i.e., explicit solvent and implicit solvent are listed.
 
 
-```
 ## References
 ### [1] https://github.com/choderalab/yank
 ### [2] https://github.com/choderalab/yank-examples/blob/master/examples/binding/t4-lysozyme/p-xylene-explicit.yaml
