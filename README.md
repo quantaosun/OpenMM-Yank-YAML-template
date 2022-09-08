@@ -48,7 +48,7 @@ experiments:
 ```
 ## Other Modifications
 
-The lambda windows are doubled for ```complex```
+The lambda window density were increased for ```complex```, especially for L-J function.
 
 the ```default_nsteps_per_iteration``` was incresed from ```500``` to ```1000```
 
