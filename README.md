@@ -1,5 +1,7 @@
 
-# Two scripts to be used on goolge colab for the ```Yank``` package [1].
+# For calculating binding free energy of kinase and its bound ligand.
+
+## Two scripts to be used on goolge colab for the ```Yank``` package [1].
 
 ## It is designed to run the simulation until the returned dG error is smaller than ``` 1 kT ```, it swaps simulation for ```complex``` and ```solvent``` every ```100``` steps.  
 
