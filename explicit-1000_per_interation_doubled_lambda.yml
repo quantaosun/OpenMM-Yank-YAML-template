@@ -3,7 +3,7 @@ options:
   minimize: yes
   verbose: yes
   default_number_of_iterations: 200000
-  default_nsteps_per_iteration: 1000
+  default_nsteps_per_iteration: 750
   checkpoint_interval: 50
   temperature: 300*kelvin
   pressure: 1*atmosphere # To run with NVT ensemble, set this option to "null". Defaults to 1 atm if excluded
