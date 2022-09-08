@@ -7,7 +7,7 @@
 # To achieve that goal, 3 modifications were appliced to this example [2].
 
 ## Modification 1, 
-### define a large number of steps ```20000```, define checkpoint frequency ``` 50 ```,  and swap frequency between legs ``` 100```
+### define a large number of steps ```200000```, define checkpoint frequency ``` 50 ```,  and swap frequency between legs ``` 100```
 
 ```
 options:
