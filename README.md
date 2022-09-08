@@ -46,6 +46,11 @@ experiments:
   restraint:
     type: Harmonic
 ```
+## Other Modifications
+
+The lambda windows are doubled for ```complex```
+
+the ```default_nsteps_per_iteration``` was incresed from ```500``` to ```1000```
 
 # Combine everything. Below is the full script.
 
@@ -54,11 +59,11 @@ experiments:
 options:
   minimize: yes
   verbose: yes
-  default_number_of_iterations: 20000
-  default_nsteps_per_iteration: 500
+  default_number_of_iterations: 200000
+  default_nsteps_per_iteration: 1000
   checkpoint_interval: 50
   temperature: 300*kelvin
-  pressure: 1*atmosphere 
+  pressure: 1*atmosphere # To run with NVT ensemble, set this option to "null". Defaults to 1 atm if excluded
   platform: OpenCL
   output_dir: p-xylene-explicit-output
   switch_phase_interval: 100
@@ -99,14 +104,12 @@ systems:
     solvent: pme
     leap:
       parameters: [leaprc.protein.ff14SB, leaprc.gaff2, leaprc.water.tip4pew]
-      
- # Define the Sampler, set error requirement before stop the phase simulaiton
- 
+
 samplers:
      stop_after_reaching_1:
          type: ReplicaExchangeSampler
          replica_mixing_scheme: swap-all
-         online_analysis_interval: 100
+         online_analysis_interval: 300
          online_analysis_target_error: 1.0
 
 # The protocols define the alchemical path each phase will take, we use the same lambda values, though they could be different
@@ -115,14 +118,14 @@ protocols:
   absolute-binding:
     complex:
       alchemical_path:
-        lambda_electrostatics: [1.00, 1.00, 1.00, 1.00, 1.00, 0.90, 0.80, 0.70, 0.60, 0.1000, 0.40, 0.30, 0.20, 0.10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
-        lambda_sterics:        [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.90, 0.80, 0.70, 0.60, 0.1000, 0.40, 0.30, 0.20, 0.10, 0.00]
+        lambda_electrostatics: [1.00, 1.00, 1.00, 1.00, 1.00, 0.95, 0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.55, 0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.05, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+        lambda_sterics:        [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.95, 0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.55, 0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.05, 0.00]
         # Set lambda restraints reverse of coupling parameter (see below in "restraint" for reason)
-        lambda_restraints:     [0.00, 0.25, 0.1000, 0.75, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]
+        lambda_restraints:     [0.00, 0.25, 0.50, 0.75, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00]
     solvent:
       alchemical_path:
-        lambda_electrostatics: [1.00, 0.90, 0.80, 0.70, 0.60, 0.1000, 0.40, 0.30, 0.20, 0.10, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
-        lambda_sterics:        [1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.90, 0.80, 0.70, 0.60, 0.1000, 0.40, 0.30, 0.20, 0.10, 0.00]
+        lambda_electrostatics: [1.00,  0.90, 0.80, 0.70, 0.60, 0.50, 0.40, 0.30, 0.20, 0.10, 0.05, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+        lambda_sterics:        [1.00,  1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 0.90, 0.80, 0.70, 0.60, 0.50, 0.40, 0.30, 0.20, 0.10, 0.00]
 
 # Here we combine the system and the protocol to make an experiment
 experiments:
