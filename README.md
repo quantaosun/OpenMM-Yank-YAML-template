@@ -62,6 +62,9 @@ the ```default_nsteps_per_iteration``` was incresed from ```500``` to ```1000```
 # Combine everything, as listed above.
 ### Two versions, i.e., explicit solvent and implicit solvent are listed.
 
+## Restrain selection
+http://getyank.org/latest/algorithms.html 
+
 
 ## References
 ### [1] https://github.com/choderalab/yank
