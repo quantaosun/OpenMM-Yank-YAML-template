@@ -64,7 +64,9 @@ the ```default_nsteps_per_iteration``` was incresed from ```500``` to ```1000```
 
 ## Restrain selection
 http://getyank.org/latest/algorithms.html 
+![image](https://user-images.githubusercontent.com/75652473/192064655-d24f36fa-e16b-4af9-b086-036af4c438cb.png)
 
+Image from above official site of Yank link
 
 ## References
 ### [1] https://github.com/choderalab/yank
