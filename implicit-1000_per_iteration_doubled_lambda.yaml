@@ -71,5 +71,4 @@ experiments:
   protocol: absolute-binding
   sampler: stop_after_reaching_1
   restraint:
-    #type: Harmonic # Keep the ligand near the protein
-    tpye: Boresch
+    type: Boresch # Keep the ligand near the protein
