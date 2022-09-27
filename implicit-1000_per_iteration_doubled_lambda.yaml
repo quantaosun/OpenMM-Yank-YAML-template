@@ -47,7 +47,7 @@ samplers:
      stop_after_reaching_1:
          type: ReplicaExchangeSampler
          replica_mixing_scheme: swap-all
-         #online_analysis_interval: 300
+         online_analysis_interval: 100
          online_analysis_target_error: 0.1
 
 # The protocols define the alchemical path each phase will take, we use the same lambda values, though they could be different
