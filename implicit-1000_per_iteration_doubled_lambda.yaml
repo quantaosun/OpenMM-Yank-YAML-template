@@ -5,7 +5,7 @@ options:
   default_number_of_iterations: 200000
   default_nsteps_per_iteration: 750
   checkpoint_interval: 100
-  platform: OpenCL
+  platform: CUDA
   temperature: 300*kelvin
   pressure: null
   output_dir: p-xylene-implicit-output
