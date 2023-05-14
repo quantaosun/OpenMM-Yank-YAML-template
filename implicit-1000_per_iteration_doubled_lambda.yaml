@@ -8,7 +8,7 @@ options:
   platform: CUDA
   temperature: 300*kelvin
   pressure: null
-  output_dir: p-xylene-implicit-output
+  output_dir: ABF-implicit-output
   switch_phase_interval: 100
 
 
@@ -72,4 +72,4 @@ experiments:
   sampler: stop_after_reaching_1
   restraint:
     type: Boresch # keep the ligand in a single pocket
-    #type: Hamonic   Keep the ligand near the protein, by a simple atom to atom restrain, which is very weak.
+  
